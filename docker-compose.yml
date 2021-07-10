@@ -26,8 +26,8 @@ services:
       - redis
       - minio
     extra_hosts:
-      - "www.cart.8dx.test:127.0.0.1"
-      - "admin.cart.8dx.test:127.0.0.1"
+      - "www.cart-memo.test:127.0.0.1"
+      - "admin.cart-memo.test:127.0.0.1"
 
   mysql:
     image: mysql:5.7
