@@ -40,7 +40,7 @@ fresh:
 tinker:
 	docker-compose exec app php artisan tinker
 format:
-	docker-compose exec app ./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --using-cache=no
+	docker-compose exec app ./vendor/bin/php-cs-fixer fix -v --diff --diff-format udiff
 	docker-compose exec app yarn run lint:scss:fix
 	docker-compose exec app yarn run lint:js:fix
 	docker-compose exec app yarn run format:js:fix
