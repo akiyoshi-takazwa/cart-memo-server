@@ -46,11 +46,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::domain(config('domain.admin_host'))
                 ->middleware('web')
                 ->as('admin.')
-                ->group(base_path('routes/backend/admin.php'));
+                ->group(base_path('routes/backend/user.php'));
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+            Route::domain(config('domain.user_host'))
+                ->middleware('web')
+                ->as('www.')
+                ->group(base_path('routes/frontend/admin.php'));
         });
     }
 
