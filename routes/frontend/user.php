@@ -3,5 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('backend.auth.login');
+    return view('frontend.auth.login');
 });
