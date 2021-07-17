@@ -37,7 +37,7 @@ services:
       - "./storage/mysql:/var/lib/mysql"
     environment:
       MYSQL_DATABASE: cart
-      MYSQL_USER: cart
+      MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     container_name: cart-mysql
