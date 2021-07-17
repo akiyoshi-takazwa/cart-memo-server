@@ -16,4 +16,6 @@ return [
     'important'                     => '重要',
     'warning'                       => '警告',
     'information'                   => 'インフォメーション',
+    'system_settings'               => 'システム設定',
+    'course'                        => 'コース設定',
 ];
