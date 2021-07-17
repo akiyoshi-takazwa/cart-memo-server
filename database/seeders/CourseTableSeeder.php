@@ -16,6 +16,6 @@ class CourseTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
     }
 }
