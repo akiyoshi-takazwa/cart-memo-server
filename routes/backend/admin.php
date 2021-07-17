@@ -9,3 +9,7 @@ Route::get('/', [AuthenticatedSessionController::class, 'create'])
 
 Route::post('/', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest');
+
+Route::get('/password-rest', [AuthenticatedSessionController::class, 'create'])
+    ->middleware('guest')
+    ->name('password-reset');
