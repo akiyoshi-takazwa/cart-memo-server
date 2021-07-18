@@ -50,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::domain(config('domain.user_host'))
                 ->middleware('web')
-                ->as('www.')
+                ->as('user.')
                 ->group(base_path('routes/frontend/user.php'));
         });
     }
