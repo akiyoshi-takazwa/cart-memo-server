@@ -5,10 +5,7 @@ namespace App\Enums\Course;
 use MyCLabs\Enum\Enum;
 
 /**
- * @method static CourseType MARIO_STADIUM()
- * @method static CourseType WATER_PARK()
- * @method static CourseType SWEET_CANYON()
- * @method static CourseType DOSSUN_RUINS()
+ *
  */
 class CourseType extends Enum
 {
