@@ -1,5 +1,5 @@
 @extends ('frontend.layouts.app')
 @section('title')ホーム@endsection
 @section('content')
-    画面出来次第更新
+    ホーム画面これから調整予定
 @endsection
