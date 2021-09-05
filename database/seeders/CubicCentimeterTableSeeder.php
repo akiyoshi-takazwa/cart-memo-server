@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Enums\CubicCentimeter\CubicCentimeterType;
-use App\Models\CubicCentimeter;
 use Illuminate\Database\Seeder;
+use Packages\Infrastructure\EloquentModels\CubicCentimeter;
 
 class CubicCentimeterTableSeeder extends Seeder
 {
@@ -15,24 +15,19 @@ class CubicCentimeterTableSeeder extends Seeder
      */
     public function run()
     {
-        CubicCentimeter::factory()
-            ->create([
+        CubicCentimeter::create([
                 'name' => CubicCentimeterType::NORMAL()->getValue()
             ]);
-        CubicCentimeter::factory()
-            ->create([
+        CubicCentimeter::create([
                 'name' => CubicCentimeterType::SUPER()->getValue()
             ]);
-        CubicCentimeter::factory()
-            ->create([
+        CubicCentimeter::create([
                 'name' => CubicCentimeterType::ULTRA()->getValue()
             ]);
-        CubicCentimeter::factory()
-            ->create([
+        CubicCentimeter::create([
                 'name' => CubicCentimeterType::MIRROR()->getValue()
             ]);
-        CubicCentimeter::factory()
-            ->create([
+        CubicCentimeter::create([
                 'name' => CubicCentimeterType::HYPER()->getValue()
             ]);
     }

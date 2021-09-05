@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // TODO packagesdディレクトリにした場合のseederの記載方法 その場合はseeder使えない？
-//        $this->call([
-//        UserSeeder::class,
-//        AdminUserSeeder::class,
-//        CupTableSeeder::class,
-//        CourseTableSeeder::class,
-//        CubicCentimeterTableSeeder::class,
-//        ]);
+        $this->call([
+        //UserSeeder::class,
+        //AdminUserSeeder::class,
+        CupTableSeeder::class,
+        CourseTableSeeder::class,
+        CubicCentimeterTableSeeder::class,
+        ]);
     }
 }
