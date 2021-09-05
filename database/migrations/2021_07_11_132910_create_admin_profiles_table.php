@@ -14,9 +14,9 @@ class CreateAdminProfilesTable extends Migration
     public function up()
     {
         Schema::create('admin_profiles', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->unique()->primary();
             $table->string('name');
-            $table->string('profile_photo_path');
+            $table->string('profile_photo_path')->nullable();
             $table->timestamps();
         });
     }

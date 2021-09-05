@@ -5,22 +5,24 @@ namespace App\Http\Controllers\Frontend\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\StoreUserRequest;
 use App\Providers\RouteServiceProvider;
-use App\Repositories\Frontend\User\UserRepository;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Packages\Domain\User\UserRepositoryInterface;
+use Packages\UseCases\Frontend\User\StoreAction;
 
 class RegisteredUserController extends Controller
 {
     /**
-     * @var UserRepository
+     * @var StoreAction
      */
-    private $userRepository;
+    private $storeAction;
 
     /**
-     * @param UserRepository $userRepository
+     * RegisteredUserController constructor.
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct()
     {
-        $this->userRepository = $userRepository;
+        $this->storeAction = app(StoreAction::class);
     }
 
     /**
@@ -43,7 +45,7 @@ class RegisteredUserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $user = $this->userRepository
+        $user = $this->storeAction
             ->create($request->validated());
 
         Auth::login($user);

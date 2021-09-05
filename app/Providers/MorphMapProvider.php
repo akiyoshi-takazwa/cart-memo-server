@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Package\Infrastructure\EloquentModels\AdminProfile;
+use packages\Infrastructure\EloquentModels\UserProfile;
 
 class MorphMapProvider extends ServiceProvider
 {
@@ -25,8 +27,8 @@ class MorphMapProvider extends ServiceProvider
     public function boot()
     {
         Relation::morphMap([
-            'admin' => 'App\Models\AdminProfile',
-            'user' => 'App\Models\UserProfile',
+            'admin' => AdminProfile::class,
+            'user' => UserProfile::class,
         ]);
     }
 }

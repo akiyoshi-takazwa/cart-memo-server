@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use App\Repositories\Frontend\User\EloquentUserRepository;
-use App\Repositories\Frontend\User\UserRepository;
 use Illuminate\Support\ServiceProvider;
+use Packages\Domain\User\UserRepositoryInterface;
+use Packages\Domain\UserProfile\UserProfileRepositoryInterface;
+use Packages\Infrastructure\Repositories\Frontend\User\UserRepository;
+use Packages\Infrastructure\Repositories\Frontend\UserProfile\UserProfileRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(UserRepository::class, EloquentUserRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(UserProfileRepositoryInterface::class, UserProfileRepository::class);
     }
 }

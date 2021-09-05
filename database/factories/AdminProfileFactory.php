@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\AdminProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Package\Infrastructure\EloquentModels\AdminProfile;
 
 class AdminProfileFactory extends Factory
 {
