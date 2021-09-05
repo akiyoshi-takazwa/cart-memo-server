@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\UserProfile;
 use Database\Factories\UserProfileFactory;
 use Illuminate\Database\Seeder;
+use Packages\Infrastructure\EloquentModels\User;
+use Packages\Infrastructure\EloquentModels\UserProfile;
 
 class UserSeeder extends Seeder
 {

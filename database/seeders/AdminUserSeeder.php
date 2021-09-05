@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\AdminProfile;
-use App\Models\User;
 use Illuminate\Database\Seeder;
+use Package\Infrastructure\EloquentModels\AdminProfile;
+use packages\Infrastructure\EloquentModels\User;
 
 class AdminUserSeeder extends Seeder
 {
