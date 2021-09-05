@@ -14,9 +14,9 @@ use App\Enums\Course\StarCourseType;
 use App\Enums\Course\ThunderCourseType;
 use App\Enums\Course\ZeldaCourseType;
 use App\Enums\Cup\CupType;
-use App\Models\Course;
-use App\Models\Cup;
 use Illuminate\Database\Seeder;
+use Packages\Infrastructure\EloquentModels\Course;
+use Packages\Infrastructure\EloquentModels\Cup;
 
 class CourseTableSeeder extends Seeder
 {
@@ -42,265 +42,217 @@ class CourseTableSeeder extends Seeder
         $bellId = $Cups->firstWhere('name', CupType::BELL()->getValue())->id;
 
         // キノコ
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $kinokoId,
                 'name'   => KinokoCourseType::MARIO_STADIUM(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $kinokoId,
                 'name'   => KinokoCourseType::WATER_PARK(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $kinokoId,
                 'name'   => KinokoCourseType::SWEET_CANYON(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $kinokoId,
                 'name'   => KinokoCourseType::DOSSUN_RUINS(),
             ]);
 
         // フラワー
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $flowerId,
                 'name'   => FlowerCourseType::MARIO_CIRCUIT(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $flowerId,
                 'name'   => FlowerCourseType::KINOPIO_HARBOR(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $flowerId,
                 'name'   => FlowerCourseType::TWISTED_MANSION(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $flowerId,
                 'name'   => FlowerCourseType::HEIHO_MINE(),
             ]);
 
         // スター
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $starId,
                 'name'   => StarCourseType::SUNSHINE_AIRPORT(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $starId,
                 'name'   => StarCourseType::DOLPHIN_MISAKI(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $starId,
                 'name'   => StarCourseType::ELECTRO_DREAM(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $starId,
                 'name'   => StarCourseType::WARIO_SNOW_MOUNTAIN(),
             ]);
 
         // スペシャル
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $specialId,
                 'name'   => SpecialCourseType::SKY_GARDEN(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $specialId,
                 'name'   => SpecialCourseType::BORN_DESERT(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $specialId,
                 'name'   => SpecialCourseType::KUPA_CASTLE(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $specialId,
                 'name'   => SpecialCourseType::RAINBOW_ROAD(),
             ]);
 
         // こうら
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $shellId,
                 'name'   => ShellCourseType::WII_COW_COUNTRY(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $shellId,
                 'name'   => ShellCourseType::GBA_MARIO_CIRCUIT(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $shellId,
                 'name'   => ShellCourseType::DS_CHEEP_CHEEP_BEACH(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $shellId,
                 'name'   => ShellCourseType::N64_KINOPIO_HIGHWAY(),
             ]);
 
         // バナナ
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bananaId,
                 'name'   => ShellCourseType::WII_COW_COUNTRY(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bananaId,
                 'name'   => ShellCourseType::GBA_MARIO_CIRCUIT(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bananaId,
                 'name'   => ShellCourseType::DS_CHEEP_CHEEP_BEACH(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bananaId,
                 'name'   => ShellCourseType::N64_KINOPIO_HIGHWAY(),
             ]);
 
         // このは
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $leafId,
                 'name'   => LeafCourseType::DS_WARIO_STADIUM(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $leafId,
                 'name'   => LeafCourseType::GC_SHERBET_LAND(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $leafId,
                 'name'   => LeafCourseType::DS_MUSIC_PARK(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $leafId,
                 'name'   => LeafCourseType::N64_YOSHI_VALLEY(),
             ]);
 
         // サンダー
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $thunderId,
                 'name'   => ThunderCourseType::DS_TICKTOCK_CLOCK(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $thunderId,
                 'name'   => ThunderCourseType::DS_PIRANHA_PLANT_SLIDER(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $thunderId,
                 'name'   => ThunderCourseType::WII_GRUMBLE_VOLCANO(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $thunderId,
                 'name'   => ThunderCourseType::N64_RAINBOW_ROAD(),
             ]);
 
         // たまご
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $eggId,
                 'name'   => EggCourseType::GC_YOSHI_CIRCUIT(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $eggId,
                 'name'   => EggCourseType::EXCITE_BIKE(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $eggId,
                 'name'   => EggCourseType::DRAGON_ROAD(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $eggId,
                 'name'   => EggCourseType::MUTE_CITY(),
             ]);
 
         // ゼルダ
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $zeldaId,
                 'name'   => ZeldaCourseType::WII_WARIO_MINE(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $zeldaId,
                 'name'   => ZeldaCourseType::SFC_RAINBOW_ROAD(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $zeldaId,
                 'name'   => ZeldaCourseType::ICE_ICE_OUTPOST(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $zeldaId,
                 'name'   => ZeldaCourseType::HYRULE_CIRCUIT(),
             ]);
 
         // どうぶつ
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $animalId,
                 'name'   => AnimalCourseType::GC_BABY_PARK(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $animalId,
                 'name'   => AnimalCourseType::GBA_CHEESE_LAND(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $animalId,
                 'name'   => AnimalCourseType::NATURE_ROAD(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $animalId,
                 'name'   => AnimalCourseType::ANIMAL_CROSSING(),
             ]);
 
         // ベル
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bellId,
                 'name'   => BellCourseType::DS_NEO_KUPA_CITY(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bellId,
                 'name'   => BellCourseType::GBA_RIBBON_ROAD(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bellId,
                 'name'   => BellCourseType::SUPER_BELL_SUBWAY(),
             ]);
-        Course::factory()
-            ->create([
+        Course::create([
                 'cup_id' => $bellId,
                 'name'   => BellCourseType::BIG_BLUE(),
             ]);

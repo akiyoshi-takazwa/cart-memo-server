@@ -3,8 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Packages\Domain\Course\CourseRepositoryInterface;
+use Packages\Domain\CubicCentimeter\CubicCentimeterRepositoryInterface;
 use Packages\Domain\User\UserRepositoryInterface;
 use Packages\Domain\UserProfile\UserProfileRepositoryInterface;
+use Packages\Infrastructure\Repositories\Frontend\Course\CourseRepository;
+use Packages\Infrastructure\Repositories\Frontend\CubicCentimeter\CubicCentimeterRepository;
 use Packages\Infrastructure\Repositories\Frontend\User\UserRepository;
 use Packages\Infrastructure\Repositories\Frontend\UserProfile\UserProfileRepository;
 
@@ -19,5 +23,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserProfileRepositoryInterface::class, UserProfileRepository::class);
+        $this->app->bind(CubicCentimeterRepositoryInterface::class, CubicCentimeterRepository::class);
+        $this->app->bind(CourseRepositoryInterface::class, CourseRepository::class);
     }
 }
