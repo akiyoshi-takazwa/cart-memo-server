@@ -10,5 +10,5 @@ interface CourseRepositoryInterface
      * Get All
      * @return Collection
      */
-    public function getNameAll();
+    public function getAll();
 }

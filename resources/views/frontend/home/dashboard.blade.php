@@ -17,9 +17,9 @@
                             </div>
                             @enderror
                             <label for="text" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">CC選択</label>
-                            <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <select name='cc_id' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                 @foreach( $cubicCentimeters as $cubicCentimeter )
-                                <option>{{ $cubicCentimeter }}</option>
+                                <option value="{{ $cubicCentimeter->id }}">{{ $cubicCentimeter->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -30,9 +30,9 @@
                             </div>
                             @enderror
                             <label for="text" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">コース選択</label>
-                            <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <select name='course_id' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                 @foreach( $courses as $course )
-                                    <option>{{ $course }}</option>
+                                    <option value="{{ $course->id }}">{{ $course->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -43,7 +43,7 @@
                             </div>
                             @enderror
                             <label for="text" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">順位選択</label>
-                            <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <select name='rank' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                 @foreach( $ranks as $rank )
                                     <option>{{ $rank }}</option>
                                 @endforeach
@@ -53,6 +53,16 @@
                             <button type="submit" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">登録</button>
                         </div>
                     </form>
+                </div>
+                <div class="m-7">
+{{--                    TODO このフロント周り調整--}}
+                    <div class="mb-6">
+                        @if( isset($memos) )
+                            @foreach( $memos as $memo )
+                            <p>{{ $memo->rank }}</p>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

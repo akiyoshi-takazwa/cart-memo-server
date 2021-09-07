@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Packages\Domain\Course\CourseRepositoryInterface;
 use Packages\Domain\CubicCentimeter\CubicCentimeterRepositoryInterface;
+use Packages\Domain\Memo\MemoRepositoryInterface;
 use Packages\Domain\Rank\Rank;
 
 class HomeController extends Controller
@@ -19,6 +20,10 @@ class HomeController extends Controller
      * @var CourseRepositoryInterface
      */
     private $courseRepositoryInterface;
+    /**
+     * @var MemoRepositoryInterface
+     */
+    private $memoRepositoryInterface;
 
     /**
      * RegisteredUserController constructor.
@@ -27,6 +32,7 @@ class HomeController extends Controller
     {
         $this->cubicCentimeterRepositoryInterface = app(CubicCentimeterRepositoryInterface::class);
         $this->courseRepositoryInterface = app(CourseRepositoryInterface::class);
+        $this->memoRepositoryInterface = app(MemoRepositoryInterface::class);
     }
 
     public function __invoke()
@@ -34,12 +40,15 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $cubicCentimeters = $this->cubicCentimeterRepositoryInterface
-            ->getNameAll();
+            ->getAll();
 
         $courses = $this->courseRepositoryInterface
-            ->getNameAll();
+            ->getAll();
 
         $ranks = Rank::getRankAll();
+
+        $memos = $this->memoRepositoryInterface
+            ->getTodayMemoOfAuth(Auth::id());
 
         return view('frontend.home.dashboard')
             ->with([
@@ -47,6 +56,7 @@ class HomeController extends Controller
                 'cubicCentimeters' => $cubicCentimeters,
                 'courses'          => $courses,
                 'ranks'            => $ranks,
+                'memos'            => $memos,
             ]);
     }
 }
