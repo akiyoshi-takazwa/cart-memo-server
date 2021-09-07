@@ -12,8 +12,8 @@ class CourseRepository implements CourseRepositoryInterface
     /**
      * @return Collection
      */
-    public function getNameAll(): Collection
+    public function getAll(): Collection
     {
-        return Course::all()->pluck('name');
+        return Course::all();
     }
 }

@@ -12,8 +12,8 @@ class CubicCentimeterRepository implements CubicCentimeterRepositoryInterface
     /**
      * @return Collection
      */
-    public function getNameAll(): Collection
+    public function getAll(): Collection
     {
-        return CubicCentimeter::all()->pluck('name');
+        return CubicCentimeter::all();
     }
 }
