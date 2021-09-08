@@ -2,8 +2,9 @@
 
 namespace Packages\Infrastructure\EloquentModels;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Memo extends Model
 {
@@ -19,4 +20,28 @@ class Memo extends Model
         'rank',
         'memo',
     ];
+
+    /**
+     * @return HasOne
+     */
+    public function courses()
+    {
+        return $this->hasOne(
+            Course::class,
+            'id',
+            'course_id'
+        );
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function cubicCentimeters()
+    {
+        return $this->hasOne(
+            CubicCentimeter::class,
+            'id',
+            'cc_id'
+        );
+    }
 }

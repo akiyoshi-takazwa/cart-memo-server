@@ -34,6 +34,7 @@ class MemoRepository implements MemoRepositoryInterface
     {
         return MemoModel::where('user_id', $userId)
             ->where('play_date', Carbon::now()->format('Y-m-d'))
+            ->with(['courses', 'cubicCentimeters'])
             ->get();
     }
 }
