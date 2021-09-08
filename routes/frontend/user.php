@@ -13,13 +13,12 @@ Route::middleware(['guest'])->group(function () {
     // register
     Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('/register', [RegisteredUserController::class, 'store']);
-    //logout
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
-
 });
 
 Route::middleware(['auth'])->group(function () {
+    //logout
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
     Route::get('/top', HomeController::class)
         ->name('top');
     Route::post('/top', [MemoController::class, 'store'])->name('memo.store');

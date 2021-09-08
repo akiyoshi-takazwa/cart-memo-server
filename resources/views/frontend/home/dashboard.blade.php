@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex items-center min-h-screen bg-white dark:bg-gray-900">
         <div class="container mx-auto">
-            <div class="mx-auto my-10">
+            <div class="mx-auto my-10 mt-20">
                 <div class="text-center">
                     <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">最終更新レート：</h1>
                 </div>
@@ -51,7 +51,7 @@
                                 </select>
                             </div>
                             <div class="mb-6">
-                                <button type="submit" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">登録</button>
+                                <button type="submit" class="font-bold w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">登録</button>
                             </div>
                         </form>
                     </div>
