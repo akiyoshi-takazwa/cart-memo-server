@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
             'id'           => UserUuid::make(),
             'profile_type' => 'user',
             'profile_id'   => $usrProfile->id,
+            'username'     => 'user',
             'password'     => '$2y$10$4nAslcyqxo3wtCC2lV.n8OlojWigfRh9JuLbPZ2zy4rZKG3nZ6EcO', // password
         ]);
     }
