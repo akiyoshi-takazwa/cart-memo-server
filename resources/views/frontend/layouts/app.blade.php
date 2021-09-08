@@ -18,7 +18,11 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            <!-- Page Content -->
+            @auth
+            <header>
+                @include('frontend.layouts.header')
+            </header>
+            @endauth
             <main>
                 @yield('content')
             </main>
