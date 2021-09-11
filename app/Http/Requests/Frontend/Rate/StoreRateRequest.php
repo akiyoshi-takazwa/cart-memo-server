@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Memo;
+namespace App\Http\Requests\Frontend\Rate;
 
-use App\Enums\CubicCentimeter\CubicCentimeterType;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMemoRequest extends FormRequest
+class StoreRateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +24,14 @@ class StoreMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'course_id' => 'required|integer|exists:courses,id',
-            'cc_id'     => 'required|integer|exists:cubic_centimeters,id',
-            'rank'      => 'required|integer',
-            'memo'      => 'nullable|string|max:255',
+            'rate' => 'required|numeric|digits_between:1,5',
         ];
     }
 
-    // attribute追加
+    public function attributes()
+    {
+        return [
+            'rate' => __('cart.rate'),
+        ];
+    }
 }

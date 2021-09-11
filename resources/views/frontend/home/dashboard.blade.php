@@ -5,7 +5,7 @@
         <div class="container mx-auto">
             <div class="mx-auto my-10 mt-20">
                 <div class="text-center">
-                    <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">最終更新レート：</h1>
+                    <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">最終更新レート：{{ $latestRate->rate }}</h1>
                 </div>
                 <div class="max-w-md mx-auto mb-24">
                     <div class="m-7">

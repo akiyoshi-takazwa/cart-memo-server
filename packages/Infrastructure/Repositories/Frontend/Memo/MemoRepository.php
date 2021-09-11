@@ -4,10 +4,8 @@ namespace Packages\Infrastructure\Repositories\Frontend\Memo;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use Packages\Domain\Memo\Memo;
 use Packages\Domain\Memo\MemoRepositoryInterface;
 use Packages\Infrastructure\EloquentModels\Memo as MemoModel;
-use Packages\Infrastructure\EloquentModels\UserProfile;
 
 class MemoRepository implements MemoRepositoryInterface
 {
@@ -17,9 +15,9 @@ class MemoRepository implements MemoRepositoryInterface
      */
     public function create(array $attributes): MemoModel
     {
-        $userProfile = new MemoModel($attributes);
+        $memo = new MemoModel($attributes);
 
-        $userProfile->save();
+        $memo->save();
 
         return MemoModel::find($attributes['id']);
     }

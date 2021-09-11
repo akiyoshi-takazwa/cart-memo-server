@@ -4,6 +4,7 @@ namespace Packages\Infrastructure\EloquentModels;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -49,5 +50,17 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function rates()
+    {
+        return $this->belongsToMany(
+            rate::class,
+            'id',
+            'user_id',
+        );
     }
 }
