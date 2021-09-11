@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Frontend\Log;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\Log\GetSearchLogRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Packages\Domain\Course\CourseRepositoryInterface;
 use Packages\Domain\CubicCentimeter\CubicCentimeterRepositoryInterface;
@@ -10,7 +13,7 @@ use Packages\Domain\Memo\MemoRepositoryInterface;
 use Packages\Domain\Rank\Rank;
 use Packages\Domain\Rate\RateRepositoryInterface;
 
-class HomeController extends Controller
+class LogController extends Controller
 {
     /**
      * @var CubicCentimeterRepositoryInterface
@@ -24,10 +27,6 @@ class HomeController extends Controller
      * @var MemoRepositoryInterface
      */
     private $memoRepositoryInterface;
-    /**
-     * @var \Illuminate\Contracts\Foundation\Application|mixed
-     */
-    private $rateRepositoryInterface;
 
     /**
      * RegisteredUserController constructor.
@@ -37,35 +36,44 @@ class HomeController extends Controller
         $this->cubicCentimeterRepositoryInterface = app(CubicCentimeterRepositoryInterface::class);
         $this->courseRepositoryInterface = app(CourseRepositoryInterface::class);
         $this->memoRepositoryInterface = app(MemoRepositoryInterface::class);
-        $this->rateRepositoryInterface = app(RateRepositoryInterface::class);
     }
 
-    public function __invoke()
+    /**
+     * @param Request $request
+     * @return view
+     */
+    public function index(Request $request)
     {
-        $user = Auth::user();
+        $memos = null;
 
+        if($request->has('calendar') || $request->has('course_id') || $request->has('cc_id')){
+            $request->validate([
+                'calendar'  => 'nullable|date|date_format:Y-m-d',
+                'course_id' => 'nullable|integer|exists:courses,id',
+                'cc_id'     => 'nullable|integer|exists:cubic_centimeters,id',
+            ]);
+
+            $requestArray = [
+                'calendar'  => $request->input('calendar'),
+                'course_id' => $request->input('course_id'),
+                'cc_id'     => $request->input('cc_id'),
+            ];
+
+            $memos = $this->memoRepositoryInterface
+                ->searchMemoByLog($requestArray, Auth::id());
+        }
         $cubicCentimeters = $this->cubicCentimeterRepositoryInterface
             ->getAll();
-
         $courses = $this->courseRepositoryInterface
             ->getAll();
-
         $ranks = Rank::getRankAll();
 
-        $memos = $this->memoRepositoryInterface
-            ->getTodayMemoOfAuth(Auth::id());
-
-        $latestRate = $this->rateRepositoryInterface
-            ->getLatestRateByUser(Auth::id());
-
-        return view('frontend.home.dashboard')
+        return view('frontend.log.index')
             ->with([
-                'user'             => $user,
                 'cubicCentimeters' => $cubicCentimeters,
                 'courses'          => $courses,
                 'ranks'            => $ranks,
-                'memos'            => $memos,
-                'latestRate'       => $latestRate,
+                'memos'            => $memos
             ]);
     }
 }

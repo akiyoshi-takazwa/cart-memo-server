@@ -9,7 +9,7 @@
                 レート登録・更新
             </a>
             <span class="text-white lg:inline-block">|</span>
-            <a href="/log" class="text-white block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-gray-900 mx-2">
+            <a href="/logs" class="text-white block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-gray-900 mx-2">
                 履歴
             </a>
             <span class="text-white lg:inline-block">|</span>
