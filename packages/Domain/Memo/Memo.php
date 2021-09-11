@@ -33,7 +33,6 @@ class Memo
     private $id;
 
     /**
-     * GoogleCalendar constructor.
      * @param int $courseId
      * @param int $ccId
      * @param int $rank

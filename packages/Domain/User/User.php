@@ -10,7 +10,6 @@ class User
     private $password;
 
     /**
-     * GoogleCalendar constructor.
      * @param string $password
      */
     public function __construct(string $password)
