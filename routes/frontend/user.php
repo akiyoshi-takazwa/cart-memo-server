@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\Auth\RegisteredUserController;
 use App\Http\Controllers\Frontend\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\Log\LogController;
 use App\Http\Controllers\Frontend\Memo\MemoController;
 use App\Http\Controllers\Frontend\Rate\RateController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,7 @@ Route::middleware(['auth'])->group(function () {
     // rate
     Route::get('/rates', [RateController::class, 'index'])->name('rate');
     Route::post('/rates', [RateController::class, 'store']);
+
+    // log
+    Route::get('/logs', [LogController::class, 'index'])->name('log');
 });

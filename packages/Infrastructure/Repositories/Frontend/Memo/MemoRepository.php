@@ -35,4 +35,19 @@ class MemoRepository implements MemoRepositoryInterface
             ->with(['courses', 'cubicCentimeters'])
             ->get();
     }
+
+    /**
+     * @param array $attributes
+     * @param string $userId
+     * @return Collection
+     */
+    public function searchMemoByLog(array $attributes, string $userId) :Collection
+    {
+        return MemoModel::where('user_id', $userId)
+            ->where('play_date', $attributes['calendar'])
+            ->where('cc_id', (int)$attributes['cc_id'])
+            ->where('course_id', (int)$attributes['course_id'])
+            ->with(['courses', 'cubicCentimeters'])
+            ->get();
+    }
 }
