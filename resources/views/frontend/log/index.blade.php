@@ -4,6 +4,7 @@
     <div class="flex min-h-screen bg-white dark:bg-gray-900">
         <div class="container mx-auto">
             <form method="GET" class="flex mt-20 items-center" action="{{ route('user.log') }}">
+{{--                TODO 選択した値をデフォルトにする--}}
                 @csrf
                 <div class="mb-6 mr-5">
                     @error('calendar')
@@ -22,6 +23,7 @@
                     @enderror
                     <label for="text" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">CC選択</label>
                     <select name='cc_id' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                        <option value="0">選択なし</option>
                         @foreach( $cubicCentimeters as $cubicCentimeter )
                             <option value="{{ $cubicCentimeter->id }}">{{ $cubicCentimeter->name }}</option>
                         @endforeach
@@ -35,6 +37,7 @@
                     @enderror
                     <label for="text" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">コース選択</label>
                     <select name='course_id' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                        <option value="0">選択なし</option>
                         @foreach( $courses as $course )
                             <option value="{{ $course->id }}">{{ $course->name }}</option>
                         @endforeach
@@ -78,7 +81,7 @@
                                         <p class="text-gray-700 px-6 py-3 items-center text-center">{{ $memo->courses->name }}</p>
                                     </td>
                                     <td class="border-dashed border-t border-gray-200 text-center">
-                                        <p class="text-gray-700 px-6 py-3 items-center">{{ $memo->rank }}</p>
+                                        <p class="text-gray-700 px-6 py-3 items-center">{{ $memo->cubicCentimeters->name }}</p>
                                     </td>
                                     <td class="border-dashed border-t border-gray-200 text-center">
                                         <p class="text-gray-700 px-6 py-3 items-center">{{ $memo->rank }}</p>

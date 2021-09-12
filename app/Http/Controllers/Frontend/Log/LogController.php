@@ -44,24 +44,28 @@ class LogController extends Controller
      */
     public function index(Request $request)
     {
-        $memos = null;
+        $searchArray = [
+            'calendar'  => now()->format('Y-m-d'),
+            'course_id' => 0,
+            'cc_id'     => 0,
+        ];
 
         if($request->has('calendar') || $request->has('course_id') || $request->has('cc_id')){
             $request->validate([
                 'calendar'  => 'nullable|date|date_format:Y-m-d',
-                'course_id' => 'nullable|integer|exists:courses,id',
-                'cc_id'     => 'nullable|integer|exists:cubic_centimeters,id',
+                'course_id' => 'nullable|integer|',
+                'cc_id'     => 'nullable|integer|',
             ]);
 
-            $requestArray = [
+            $searchArray = [
                 'calendar'  => $request->input('calendar'),
                 'course_id' => $request->input('course_id'),
                 'cc_id'     => $request->input('cc_id'),
             ];
-
-            $memos = $this->memoRepositoryInterface
-                ->searchMemoByLog($requestArray, Auth::id());
         }
+        $memos = $this->memoRepositoryInterface
+            ->searchMemoByLog($searchArray, Auth::id());
+
         $cubicCentimeters = $this->cubicCentimeterRepositoryInterface
             ->getAll();
         $courses = $this->courseRepositoryInterface

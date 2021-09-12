@@ -43,11 +43,17 @@ class MemoRepository implements MemoRepositoryInterface
      */
     public function searchMemoByLog(array $attributes, string $userId) :Collection
     {
-        return MemoModel::where('user_id', $userId)
-            ->where('play_date', $attributes['calendar'])
-            ->where('cc_id', (int)$attributes['cc_id'])
-            ->where('course_id', (int)$attributes['course_id'])
+        $q = MemoModel::where('user_id', $userId)
             ->with(['courses', 'cubicCentimeters'])
-            ->get();
+            ->where('play_date', $attributes['calendar']);
+
+        if((int)$attributes['cc_id'] !== 0){
+            $q->where('cc_id', $attributes['cc_id']);
+        }
+        if((int)$attributes['course_id'] !== 0){
+            $q->where('course_id', $attributes['course_id']);
+        }
+
+        return $q->get();
     }
 }
