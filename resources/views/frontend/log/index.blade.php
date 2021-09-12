@@ -4,7 +4,6 @@
     <div class="flex min-h-screen bg-white dark:bg-gray-900">
         <div class="container mx-auto">
             <form method="GET" class="flex mt-20 items-center" action="{{ route('user.log') }}">
-{{--                TODO 選択した値をデフォルトにする--}}
                 @csrf
                 <div class="mb-6 mr-5">
                     @error('calendar')
