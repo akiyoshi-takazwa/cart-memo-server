@@ -28,4 +28,13 @@ interface MemoRepositoryInterface
      * @return mixed
      */
     public function searchMemoByLog(array $attributes, string $userId);
+
+    /**
+     * Get Memo of login user by calender or cc or course start_date or end_date.
+     *
+     * @param array $attributes
+     * @param string $userId
+     * @return mixed
+     */
+    public function getMemosByAnalyzer(array $attributes, string $userId);
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\Analysis\AnalysisController;
 use App\Http\Controllers\Frontend\Auth\RegisteredUserController;
 use App\Http\Controllers\Frontend\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -32,4 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
     // log
     Route::get('/logs', [LogController::class, 'index'])->name('log');
+
+    // analysis
+    Route::get('/analysis', [AnalysisController::class, 'index'])->name('analysis');
 });
