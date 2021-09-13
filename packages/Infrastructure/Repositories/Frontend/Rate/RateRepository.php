@@ -37,5 +37,22 @@ class RateRepository implements RateRepositoryInterface
         return null;
     }
 
+    /**
+     *
+     * @param string $userId
+     * @return mixed
+     */
+    public function getThreeMonthlyRateByUser(string $userId)
+    {
+        $userRateIds = UserRate::where('user_id', $userId)
+            ->whereBetween('created_at', [now()->subMonths(3), now()])->get()->pluck('rate_id')->all();
+
+        if(isset($userRateIds)){
+            return Rate::whereIn('id', $userRateIds)
+                ->get()->pluck('rate', 'created_at')->sortBy('created_at');
+        }
+
+        return null;
+    }
 
 }

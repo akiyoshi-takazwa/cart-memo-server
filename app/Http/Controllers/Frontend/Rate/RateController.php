@@ -35,9 +35,13 @@ class RateController extends Controller
         $latestRate = $this->rateRepositoryInterface
             ->getLatestRateByUser(Auth::id());
 
+        $ratesThreeMonthly = $this->rateRepositoryInterface
+            ->getThreeMonthlyRateByUser(Auth::id());
+
         return view('frontend.rate.rate')
             ->with([
                 'latestRate' => $latestRate,
+                'ratesThreeMonthly' => $ratesThreeMonthly
             ]);
     }
 

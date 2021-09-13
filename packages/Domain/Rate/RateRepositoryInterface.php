@@ -18,4 +18,11 @@ interface RateRepositoryInterface
      * @return mixed
      */
     public function getLatestRateByUser(string $userId);
+
+    /**
+     *
+     * @param string $userId
+     * @return mixed
+     */
+    public function getThreeMonthlyRateByUser(string $userId);
 }

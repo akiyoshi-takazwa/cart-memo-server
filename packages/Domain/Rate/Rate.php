@@ -5,14 +5,14 @@ namespace Packages\Domain\Rate;
 class Rate
 {
     /**
-     * @var float
+     * @var int
      */
     private $rate;
 
     /**
-     * @param float $rate
+     * @param int $rate
      */
-    public function __construct(float $rate)
+    public function __construct(int $rate)
     {
         $this->rate = $rate;
     }

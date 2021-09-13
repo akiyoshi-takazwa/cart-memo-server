@@ -37,19 +37,17 @@ class StoreAction
      */
     public function create(array $attributes) :UserModel
     {
-        $userProfileDomain = new UserProfile($attributes['name']);
-
         $profileArray = [
             'id'   => UserProfileUuid::make(),
-            'name' => $userProfileDomain->getName(),
         ];
         $userProfile = $this->userProfileRepositoryInterface
             ->create($profileArray);
 
-        $userDomain = new User($attributes['password']);
+        $userDomain = new User($attributes['username'], $attributes['password']);
 
         $userArray = [
             'id'       => UserUuid::make(),
+            'username' => $userDomain->getUsername(),
             'password' => $userDomain->getPassword(),
             'profile_type' => 'user',
             'profile_id'   => $userProfile->id,
